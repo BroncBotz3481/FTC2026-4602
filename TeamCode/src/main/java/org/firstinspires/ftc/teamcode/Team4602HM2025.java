@@ -8,6 +8,7 @@ public class Team4602HM2025 {
     public DcMotor DriveLeftBack = null;
     public DcMotor DriveLeftFront = null;
     public DcMotor DriveRightFront = null;
+    public DcMotor Shooter = null;
 
 
 
@@ -23,6 +24,7 @@ public class Team4602HM2025 {
         DriveRightFront = hwMap.get(DcMotor.class,"DriveRightFront");
         DriveLeftBack = hwMap.get(DcMotor.class,"DriveLeftBack");
         DriveRightBack = hwMap.get(DcMotor.class,"DriveRightBack");
+        Shooter = hwMap.get(DcMotor.class, "Shooter");
         //   Lights = hwMap.get(RevBlinkinLedDriver.class,"Lights");
 
         DriveLeftFront.setDirection(DcMotor.Direction.FORWARD);
@@ -44,6 +46,11 @@ public class Team4602HM2025 {
         DriveRightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         DriveRightBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         DriveRightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        Shooter.setDirection(DcMotor.Direction.REVERSE);
+        Shooter.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        Shooter.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        Shooter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 //        ColorSensor = hwMap.get(NormalizedColorSensor.class, "sensor");
     }
