@@ -70,8 +70,17 @@ public class Team4602TeleOp2025 extends LinearOpMode {
                 moveRight(mag);
             }
 
-
-            //write your code here
+// make sure to configure the motors and servos
+           if(gamepad2.right_trigger > 0.5){
+               robot.ServoRight.setPower(-1);
+               robot.ServoLeft.setPower(1);
+               robot.Shooter.setPower(1);
+           }
+           else if(gamepad2.left_trigger > 0.5){
+               robot.ServoRight.setPower(-0.7);
+               robot.ServoLeft.setPower(0.7);
+               robot.Shooter.setPower(0.7);
+           }
         }
     }
 
