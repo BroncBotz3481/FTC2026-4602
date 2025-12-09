@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous (name="Team4008AutoTimeBased", group="4008")
-public class Team4602AutoTimeBased extends LinearOpMode {
+public class Team4602BlueCloseAuto extends LinearOpMode {
 
     Team4602HM2025 robot = new Team4602HM2025();
     ElapsedTime Time = new ElapsedTime();
@@ -13,10 +13,18 @@ public class Team4602AutoTimeBased extends LinearOpMode {
     @Override
     public void runOpMode() {
         robot.Map(hardwareMap);
-        sleep(3000);
+        sleep(1000);
         waitForStart();
 
-        moveForward(0.5,1000); // This powers all the motors to move the robot forward for 1000 milseconds
+        moveForward(-0.5,450);// This powers all the motors to move the robot forward for 1000 milseconds
+        robot.Shooter.setPower(0.25);
+        sleep(2000);
+        robot.ServoRight.setPower(-0.9);
+        robot.ServoLeft.setPower(0.9);
+        sleep(500);
+        robot.Shooter.setPower(0);
+        robot.ServoRight.setPower(0);
+        robot.ServoLeft.setPower(0);
     }
 
     public void moveForward (double power, int time){
