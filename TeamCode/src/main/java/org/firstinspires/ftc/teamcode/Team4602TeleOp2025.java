@@ -36,6 +36,12 @@ public class Team4602TeleOp2025 extends LinearOpMode {
             double x = -gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
             double rx = -gamepad1.right_stick_x;
 
+            double ShooterTicks = 28;
+            double DriveTicks = 537.6;
+            double IntakeTicks = 384.5;
+
+
+
             //Optional Deadzones
 //            double y = (Math.abs(gamepad1.left_stick_y) > 0.1 ? gamepad1.left_stick_y : 0); // Remember, this is reversed!
 //            double x = -(Math.abs(gamepad1.left_stick_x) > 0.1 ? gamepad1.left_stick_x : 0) * 1.1; // Counteract imperfect strafing
@@ -72,24 +78,27 @@ public class Team4602TeleOp2025 extends LinearOpMode {
 
 // make sure to configure the motors and servos
            if(gamepad2.right_trigger > 0.5){
-               robot.Shooter.setPower(0.45);
+               robot.Shooter.setPower(0.65);
            }
-           else{
+           else if(gamepad2.right_bumper){
+               robot.Shooter.setPower(-0.7);
+            }
+           else {
                robot.Shooter.setPower(0);
             }
            if(gamepad2.left_trigger > 0.5){
-               robot.ServoRight.setPower(-0.7);
-               robot.ServoLeft.setPower(0.7);
+               robot.ServoRight.setPower(-0.9);
+               robot.ServoLeft.setPower(0.9);
            }
            else{
                robot.ServoRight.setPower(0);
                robot.ServoLeft.setPower(0);
            }
            if(gamepad1.right_trigger > 0.5){
-               robot.Intake.setPower(-0.9);
+               robot.Intake.setPower(-1);
            }
            else if(gamepad1.left_trigger > 0.5){
-               robot.Intake.setPower(0.9);
+               robot.Intake.setPower(1);
             }
            else{
                robot.Intake.setPower(0);

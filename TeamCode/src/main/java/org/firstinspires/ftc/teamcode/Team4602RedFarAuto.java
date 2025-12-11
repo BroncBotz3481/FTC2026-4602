@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous (name="Team4602BlueFarAuto", group="4602")
-public class Team4602BlueFarAuto extends LinearOpMode {
+@Autonomous (name="Team4602RedFarAuto", group="4602")
+public class Team4602RedFarAuto extends LinearOpMode {
 
     Team4602HM2025 robot = new Team4602HM2025();
     ElapsedTime Time = new ElapsedTime();
@@ -18,7 +18,8 @@ public class Team4602BlueFarAuto extends LinearOpMode {
 
         moveSideways(0.5, 450);
         sleep(450);
-        Turn(0.5,350);
+        Turn(-0.5,350);
+        sleep(500);
         robot.Shooter.setPower(-0.7);
         sleep(2000);
         robot.ServoRight.setPower(-0.9);

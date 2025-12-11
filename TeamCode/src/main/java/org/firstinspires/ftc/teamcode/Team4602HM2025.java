@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.CRServo;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -10,7 +11,7 @@ public class Team4602HM2025 {
     public DcMotor DriveLeftBack = null;
     public DcMotor DriveLeftFront = null;
     public DcMotor DriveRightFront = null;
-    public DcMotor Shooter = null;
+    public DcMotorEx Shooter = null;
     public CRServo ServoLeft = null;
     public CRServo ServoRight = null;
     public DcMotor Intake = null;
@@ -29,7 +30,7 @@ public class Team4602HM2025 {
         DriveRightFront = hwMap.get(DcMotor.class,"DriveRightFront");
         DriveLeftBack = hwMap.get(DcMotor.class,"DriveLeftBack");
         DriveRightBack = hwMap.get(DcMotor.class,"DriveRightBack");
-        Shooter = hwMap.get(DcMotor.class, "Shooter");
+        Shooter = hwMap.get(DcMotorEx.class, "Shooter");
         Intake = hwMap.get(DcMotor.class, "Intake");
         ServoLeft = hwMap.get(CRServo.class, "ServoLeft");
         ServoRight = hwMap.get(CRServo.class, "ServoRight");

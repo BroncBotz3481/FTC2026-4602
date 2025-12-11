@@ -4,40 +4,57 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous (name="Team4008AutoTimeBased", group="4008")
+@Autonomous (name="Team4602BlueCloseAuto", group="4602")
 public class Team4602BlueCloseAuto extends LinearOpMode {
+
 
     Team4602HM2025 robot = new Team4602HM2025();
     ElapsedTime Time = new ElapsedTime();
 
     @Override
     public void runOpMode() {
+        telemetry.addData("GTelemetry","something");
+        telemetry.update();
+        System.out.println("DATA BE JERE");
         robot.Map(hardwareMap);
         sleep(1000);
         waitForStart();
 
-        moveForward(-0.5,450);// This powers all the motors to move the robot forward for 1000 milseconds
-        robot.Shooter.setPower(0.65);
-        sleep(2000);
+        moveForward(-0.5,2000);
+        robot.Shooter.setPower(0.75);
+        robot.Intake.setPower(-1);
+        double secs = getRuntime();
+        while(getRuntime()-secs <= 3)
+        {
+            double rps = robot.Shooter.getVelocity() / 28.0;
+                telemetry.addData("Shooter Speed (rotor rotations per second)", rps);
+                telemetry.update();
+//                if(rps > x)
+//                    robot.Shooter.setPower(0.5);
+//                if(rps < y)
+//                    robot.Shooter.setPower(0.75);
+        }
+        sleep(3000);
         robot.ServoRight.setPower(-0.9);
         robot.ServoLeft.setPower(0.9);
         //test to change the time for each cycle
-        sleep(1000);
+        sleep(3000);
         robot.ServoRight.setPower(0);
         robot.ServoLeft.setPower(0);
         sleep(1000);
         robot.ServoRight.setPower(-0.9);
         robot.ServoLeft.setPower(0.9);
-        sleep(1000);
+        sleep(3000);
         robot.ServoRight.setPower(0);
         robot.ServoLeft.setPower(0);
         sleep(1000);
         robot.ServoRight.setPower(-0.9);
         robot.ServoLeft.setPower(0.9);
-        sleep(1000);
+        sleep(3000);
         robot.Shooter.setPower(0);
         robot.ServoRight.setPower(0);
         robot.ServoLeft.setPower(0);
+        robot.Intake.setPower(0);
     }
 
     public void moveForward (double power, int time){
