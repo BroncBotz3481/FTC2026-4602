@@ -11,28 +11,34 @@ public class Team4602BlueCloseAuto extends LinearOpMode {
     Team4602HM2025 robot = new Team4602HM2025();
     ElapsedTime Time = new ElapsedTime();
 
+
     @Override
     public void runOpMode() {
-        telemetry.addData("GTelemetry","something");
-        telemetry.update();
-        System.out.println("DATA BE JERE");
         robot.Map(hardwareMap);
-        sleep(1000);
+        double min = 50;
+        double max = 60;
         waitForStart();
 
-        moveForward(-0.5,2000);
+        moveForward(-0.5, 2000);
         robot.Shooter.setPower(0.75);
         robot.Intake.setPower(-1);
         double secs = getRuntime();
-        while(getRuntime()-secs <= 3)
-        {
-            double rps = robot.Shooter.getVelocity() / 28.0;
+        while (getRuntime() - secs <= 3) {
+            double time = getRuntime() - secs;
+            if(getRuntime() - time > 1.5) {
+                double rps = robot.Shooter.getVelocity() / 28.0;
                 telemetry.addData("Shooter Speed (rotor rotations per second)", rps);
                 telemetry.update();
-//                if(rps > x)
-//                    robot.Shooter.setPower(0.5);
-//                if(rps < y)
-//                    robot.Shooter.setPower(0.75);
+                if (rps < min || rps > max) {
+                    if (rps > max) {
+                        robot.Shooter.setPower(0.6);
+                        break;
+                    } else if (rps < min) {
+                        robot.Shooter.setPower(0.85);
+                        break;
+                    }
+                }
+            }
         }
         sleep(3000);
         robot.ServoRight.setPower(-0.9);
@@ -55,9 +61,12 @@ public class Team4602BlueCloseAuto extends LinearOpMode {
         robot.ServoRight.setPower(0);
         robot.ServoLeft.setPower(0);
         robot.Intake.setPower(0);
-    }
+        }
 
-    public void moveForward (double power, int time){
+
+
+
+    public void moveForward(double power, int time) {
         robot.DriveRightFront.setPower(power);
         robot.DriveLeftFront.setPower(power);
         robot.DriveRightBack.setPower(power);
@@ -68,4 +77,5 @@ public class Team4602BlueCloseAuto extends LinearOpMode {
         robot.DriveRightBack.setPower(0);
         robot.DriveLeftBack.setPower(0);
     }
+
 }
