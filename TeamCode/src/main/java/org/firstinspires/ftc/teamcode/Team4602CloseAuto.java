@@ -14,47 +14,12 @@ public class Team4602CloseAuto extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-        robot.Map(hardwareMap);
-        double min = 55;
-        double max = 60;
-        waitForStart();
+       moveForward(-0.8, 3000);
 
-        moveForward(-0.5, 2000);
-        robot.Shooter.setPower(0.75);
-        robot.Intake.setPower(-1);
-        while (getRuntime() <= 6 && getRuntime() >= 5) {
-                double rps = robot.Shooter.getVelocity() / 28.0;
-                telemetry.addData("Shooter Speed (rotor rotations per second)", rps);
-                telemetry.update();
-                if (rps < min || rps > max) {
-                    if (rps > max) {
-                        robot.Shooter.setPower(0.65);
-                    } else if (rps < min) {
-                        robot.Shooter.setPower(0.85);
-                }
-            }
-        }
-        sleep(3000);
-        robot.ServoRight.setPower(-0.9);
-        robot.ServoLeft.setPower(0.9);
-        //test to change the time for each cycle
-        sleep(3000);
-        robot.ServoRight.setPower(0);
-        robot.ServoLeft.setPower(0);
-        sleep(1000);
-        robot.ServoRight.setPower(-0.9);
-        robot.ServoLeft.setPower(0.9);
-        sleep(3000);
-        robot.ServoRight.setPower(0);
-        robot.ServoLeft.setPower(0);
-        sleep(1000);
-        robot.ServoRight.setPower(-0.9);
-        robot.ServoLeft.setPower(0.9);
-        sleep(3000);
-        robot.Shooter.setPower(0);
-        robot.ServoRight.setPower(0);
-        robot.ServoLeft.setPower(0);
-        robot.Intake.setPower(0);
+       robot.Shooter.setPower(0.9);
+       robot.Intake.setPower(0.5);
+       robot.Transfer.setPower(0.5);
+
     }
 
 

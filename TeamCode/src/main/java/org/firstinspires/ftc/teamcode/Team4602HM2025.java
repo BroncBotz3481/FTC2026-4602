@@ -12,8 +12,6 @@ public class Team4602HM2025 {
     public DcMotor DriveRightFront = null;
     public DcMotor DriveRightBack = null;
     public DcMotorEx Shooter = null;
-    public CRServo ServoLeft = null;
-    public CRServo ServoRight = null;
     public DcMotor Intake = null;
     public DcMotor Transfer = null;
 
@@ -33,8 +31,6 @@ public class Team4602HM2025 {
         DriveRightBack = hwMap.get(DcMotor.class,"DriveRightBack");
         Shooter = hwMap.get(DcMotorEx.class, "Shooter");
         Intake = hwMap.get(DcMotor.class, "Intake");
-        ServoLeft = hwMap.get(CRServo.class, "ServoLeft");
-        ServoRight = hwMap.get(CRServo.class, "ServoRight");
         Transfer = hwMap.get(DcMotor.class, "Transfer");
 
         //   Lights = hwMap.get(RevBlinkinLedDriver.class,"Lights");
