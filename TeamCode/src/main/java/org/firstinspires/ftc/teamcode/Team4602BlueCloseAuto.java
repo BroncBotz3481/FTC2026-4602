@@ -15,28 +15,22 @@ public class Team4602BlueCloseAuto extends LinearOpMode {
     @Override
     public void runOpMode() {
         robot.Map(hardwareMap);
-        double min = 50;
+        double min = 55;
         double max = 60;
         waitForStart();
 
         moveForward(-0.5, 2000);
         robot.Shooter.setPower(0.75);
         robot.Intake.setPower(-1);
-        double secs = getRuntime();
-        while (getRuntime() - secs <= 3) {
-            double time = getRuntime() - secs;
-            if(getRuntime() - time > 1.5) {
+        while (getRuntime() <= 6 && getRuntime() >= 5) {
                 double rps = robot.Shooter.getVelocity() / 28.0;
                 telemetry.addData("Shooter Speed (rotor rotations per second)", rps);
                 telemetry.update();
                 if (rps < min || rps > max) {
                     if (rps > max) {
-                        robot.Shooter.setPower(0.6);
-                        break;
+                        robot.Shooter.setPower(0.65);
                     } else if (rps < min) {
                         robot.Shooter.setPower(0.85);
-                        break;
-                    }
                 }
             }
         }
@@ -61,7 +55,7 @@ public class Team4602BlueCloseAuto extends LinearOpMode {
         robot.ServoRight.setPower(0);
         robot.ServoLeft.setPower(0);
         robot.Intake.setPower(0);
-        }
+    }
 
 
 
@@ -69,12 +63,12 @@ public class Team4602BlueCloseAuto extends LinearOpMode {
     public void moveForward(double power, int time) {
         robot.DriveRightFront.setPower(power);
         robot.DriveLeftFront.setPower(power);
-        robot.DriveRightBack.setPower(power);
+        //robot.DriveRightBack.setPower(power);
         robot.DriveLeftBack.setPower(power);
         sleep(time);
         robot.DriveRightFront.setPower(0);
         robot.DriveLeftFront.setPower(0);
-        robot.DriveRightBack.setPower(0);
+        //robot.DriveRightBack.setPower(0);
         robot.DriveLeftBack.setPower(0);
     }
 

@@ -3,12 +3,16 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 //AUSTIN: YOUR DEADLINE FOR THIS IS BEFORE KICKOFF
 //WE NEED YOUR CODE FOR KICKOFF DEMONSTRATION! HELP!
 @TeleOp(name = "Team4602TeleOp2025", group = "4602")
 public class Team4602TeleOp2025 extends LinearOpMode {
     Team4602HM2025 robot = new Team4602HM2025();
+    double targetTicksPerSec = (3000/60) *28;
+
+        PDIFtuning pidController = new PDIFtuning(0, 0, 0, 0.0005);
 
     @Override
     public void runOpMode() {
@@ -76,29 +80,41 @@ public class Team4602TeleOp2025 extends LinearOpMode {
                 moveRight(mag);
             }
 
-// make sure to configure the motors and servos
            if(gamepad2.right_trigger > 0.5){
-               robot.Shooter.setPower(0.65);
+               /*robot.Shooter.setPower(0.9);
+               double currentVelo = robot.Shooter.getVelocity();
+               double power = pidController.calculate(targetTicksPerSec, currentVelo);
+               robot.Shooter.setPower(Math.max(-1.0, Math.min(1.0, power)));
+
+               telemetry.addData("Target Velo", targetTicksPerSec);
+               telemetry.addData("Actual Velo", currentVelo);
+               telemetry.update();*/
+               robot.Shooter.setPower(0.9);
            }
            else if(gamepad2.right_bumper){
-               robot.Shooter.setPower(-0.7);
+               robot.Shooter.setPower(-0.9);
+               pidController.resetIntegral();
             }
            else {
                robot.Shooter.setPower(0);
+               pidController.resetIntegral();
             }
            if(gamepad2.left_trigger > 0.5){
-               robot.ServoRight.setPower(-0.9);
-               robot.ServoLeft.setPower(0.9);
+               robot.Transfer.setPower(0.5);
+           }
+           else if (gamepad2.left_bumper){
+               robot.Transfer.setPower(-0.5);
            }
            else{
-               robot.ServoRight.setPower(0);
-               robot.ServoLeft.setPower(0);
+               robot.Transfer.setPower(0);
            }
            if(gamepad1.right_trigger > 0.5){
-               robot.Intake.setPower(-1);
+               robot.Intake.setPower(0.5);
+
            }
            else if(gamepad1.left_trigger > 0.5){
-               robot.Intake.setPower(1);
+               robot.Intake.setPower(-0.5);
+
             }
            else{
                robot.Intake.setPower(0);
@@ -132,6 +148,5 @@ public class Team4602TeleOp2025 extends LinearOpMode {
         // Left Wheels                         //Right Wheels
         robot.DriveLeftFront.setPower(0);      robot.DriveRightFront.setPower(0);
         robot.DriveRightBack.setPower(0);      robot.DriveLeftBack.setPower(0);
-
     }
 }

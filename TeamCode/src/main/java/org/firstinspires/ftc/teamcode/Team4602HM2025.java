@@ -7,14 +7,15 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Team4602HM2025 {
-    public DcMotor DriveRightBack = null;
     public DcMotor DriveLeftBack = null;
     public DcMotor DriveLeftFront = null;
     public DcMotor DriveRightFront = null;
+    public DcMotor DriveRightBack = null;
     public DcMotorEx Shooter = null;
     public CRServo ServoLeft = null;
     public CRServo ServoRight = null;
     public DcMotor Intake = null;
+    public DcMotor Transfer = null;
 
 
 
@@ -26,7 +27,7 @@ public class Team4602HM2025 {
     public void Map(HardwareMap hardwareMap)
     {
         hwMap = hardwareMap;
-        DriveLeftFront = hwMap.get(DcMotor.class,"DriveLeftFront");
+       DriveLeftFront = hwMap.get(DcMotor.class,"DriveLeftFront");
         DriveRightFront = hwMap.get(DcMotor.class,"DriveRightFront");
         DriveLeftBack = hwMap.get(DcMotor.class,"DriveLeftBack");
         DriveRightBack = hwMap.get(DcMotor.class,"DriveRightBack");
@@ -34,6 +35,7 @@ public class Team4602HM2025 {
         Intake = hwMap.get(DcMotor.class, "Intake");
         ServoLeft = hwMap.get(CRServo.class, "ServoLeft");
         ServoRight = hwMap.get(CRServo.class, "ServoRight");
+        Transfer = hwMap.get(DcMotor.class, "Transfer");
 
         //   Lights = hwMap.get(RevBlinkinLedDriver.class,"Lights");
 
@@ -66,6 +68,11 @@ public class Team4602HM2025 {
         Intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         Intake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         Intake.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+        Transfer.setDirection(DcMotor.Direction.FORWARD);
+        Transfer.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        Transfer.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        Transfer.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
 //        ColorSensor = hwMap.get(NormalizedColorSensor.class, "sensor");

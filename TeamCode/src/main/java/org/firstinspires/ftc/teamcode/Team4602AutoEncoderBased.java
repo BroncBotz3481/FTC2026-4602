@@ -25,8 +25,8 @@ public class Team4602AutoEncoderBased extends LinearOpMode {
 
     //Converts ticks to inches
     //https://firstroboticsbc.org/ftc/ftc-team-resources/autonomous-encoder-based-movement/
-    public double inchesToTicks (double inches){
-        return (inches * 537.7)/(2 * Math.PI * 1.9);
+    public double inchesToTicks(double inches) {
+        return (inches * 537.7) / (2 * Math.PI * 1.9);
     }
 
     public void driveForward(double inches, double power, int time) {
@@ -38,13 +38,13 @@ public class Team4602AutoEncoderBased extends LinearOpMode {
 
         while (opModeIsActive() && Time.milliseconds() < time
                 && robot.DriveLeftFront.getCurrentPosition() < inchesToTicks(inches)
-                && robot.DriveRightBack.getCurrentPosition() < inchesToTicks(inches))
-        {
+                //change this to DriveRightBack!!!!!!!!!!!!!!!!!!!!
+                && robot.DriveRightFront.getCurrentPosition() < inchesToTicks(inches)) {
             telemetry.addData("Encoder Val", robot.DriveLeftFront.getCurrentPosition());
         }
         robot.DriveRightFront.setPower(0);
         robot.DriveLeftFront.setPower(0);
-        robot.DriveRightBack.setPower(0);
+       // robot.DriveRightBack.setPower(0);
         robot.DriveLeftBack.setPower(0);
 
         robot.DriveLeftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER); //Stops and resets the encoder to the 0 value for next use
@@ -53,15 +53,16 @@ public class Team4602AutoEncoderBased extends LinearOpMode {
         Time.reset();
 
     }
-//if power is negative in the argument, it will turn the other way
+
+    //if power is negative in the argument, it will turn the other way
     public void turn(int ticks, double power, int sleep) {
         robot.DriveLeftBack.setTargetPosition(-ticks);
         robot.DriveLeftBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.DriveLeftBack.setPower(-power);
 
-        robot.DriveRightBack.setTargetPosition(ticks);
-        robot.DriveRightBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        robot.DriveRightBack.setPower(power);
+        //robot.DriveRightBack.setTargetPosition(ticks);
+        //robot.DriveRightBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        //robot.DriveRightBack.setPower(power);
 
         robot.DriveLeftFront.setTargetPosition(-ticks);
         robot.DriveLeftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -72,5 +73,4 @@ public class Team4602AutoEncoderBased extends LinearOpMode {
         robot.DriveRightFront.setPower(power);
         sleep(sleep);
     }
-
 }
