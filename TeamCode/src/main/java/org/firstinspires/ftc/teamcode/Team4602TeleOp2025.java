@@ -81,8 +81,7 @@ public class Team4602TeleOp2025 extends LinearOpMode {
             }
 
            if(gamepad2.right_trigger > 0.5){
-               /*robot.Shooter.setPower(0.9);
-               double currentVelo = robot.Shooter.getVelocity();
+               /*double currentVelo = robot.Shooter.getVelocity();
                double power = pidController.calculate(targetTicksPerSec, currentVelo);
                robot.Shooter.setPower(Math.max(-1.0, Math.min(1.0, power)));
 
