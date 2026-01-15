@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous (name="Team4602BlueCloseAuto", group="4602")
-public class Team4602BlueCloseAuto extends LinearOpMode {
+@Autonomous (name="Team4602CloseAuto", group="4602")
+public class Team4602CloseAuto extends LinearOpMode {
 
 
     Team4602HM2025 robot = new Team4602HM2025();
