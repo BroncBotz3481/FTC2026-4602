@@ -25,7 +25,7 @@ public class Team4602HM2025 {
     public void Map(HardwareMap hardwareMap)
     {
         hwMap = hardwareMap;
-       DriveLeftFront = hwMap.get(DcMotor.class,"DriveLeftFront");
+        DriveLeftFront = hwMap.get(DcMotor.class,"DriveLeftFront");
         DriveRightFront = hwMap.get(DcMotor.class,"DriveRightFront");
         DriveLeftBack = hwMap.get(DcMotor.class,"DriveLeftBack");
         DriveRightBack = hwMap.get(DcMotor.class,"DriveRightBack");

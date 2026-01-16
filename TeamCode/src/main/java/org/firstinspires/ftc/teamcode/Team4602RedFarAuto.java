@@ -12,37 +12,7 @@ public class Team4602RedFarAuto extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-        robot.Map(hardwareMap);
-        sleep(1000);
-        waitForStart();
 
-        moveForward(0.5,200);
-        sleep(500);
-        moveSideways(0.5, 1000);
-        sleep(450);
-        Turn(0.5,350);
-        robot.Intake.setPower(-1);
-        robot.Shooter.setPower(-0.9);
-        sleep(2000);
-        robot.ServoRight.setPower(-0.9);
-        robot.ServoLeft.setPower(0.9);
-        //test to change the time for each cycle
-        sleep(2000);
-        robot.ServoRight.setPower(0);
-        robot.ServoLeft.setPower(0);
-        sleep(1000);
-        robot.ServoRight.setPower(-0.9);
-        robot.ServoLeft.setPower(0.9);
-        sleep(2000);
-        robot.ServoRight.setPower(0);
-        robot.ServoLeft.setPower(0);
-        sleep(1000);
-        robot.ServoRight.setPower(-0.9);
-        robot.ServoLeft.setPower(0.9);
-        sleep(2000);
-        robot.Shooter.setPower(0);
-        robot.ServoRight.setPower(0);
-        robot.ServoLeft.setPower(0);
     }
     public void moveForward(double power, int time) {
         robot.DriveRightFront.setPower(power);
