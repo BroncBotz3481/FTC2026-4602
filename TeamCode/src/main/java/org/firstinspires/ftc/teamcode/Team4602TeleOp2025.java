@@ -88,7 +88,7 @@ public class Team4602TeleOp2025 extends LinearOpMode {
                telemetry.addData("Target Velo", targetTicksPerSec);
                telemetry.addData("Actual Velo", currentVelo);
                telemetry.update();*/
-               robot.Shooter.setPower(0.9);
+               robot.Shooter.setPower(0.7);
            }
            else if(gamepad2.right_bumper){
                robot.Shooter.setPower(-0.9);
@@ -99,10 +99,10 @@ public class Team4602TeleOp2025 extends LinearOpMode {
                pidController.resetIntegral();
             }
            if(gamepad2.left_trigger > 0.5){
-               robot.Transfer.setPower(0.5);
+               robot.Transfer.setPower(-0.8);
            }
            else if (gamepad2.left_bumper){
-               robot.Transfer.setPower(-0.5);
+               robot.Transfer.setPower(0.8);
            }
            else{
                robot.Transfer.setPower(0);
