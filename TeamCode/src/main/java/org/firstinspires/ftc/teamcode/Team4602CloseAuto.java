@@ -24,11 +24,23 @@ public class Team4602CloseAuto extends LinearOpMode {
 
         // ---- AUTONOMOUS SEQUENCE ----
         moveForward(800);
-        robot.Shooter.setPower(0.4);
-        sleep(3000);
+        robot.Shooter.setPower(0.6);
+        sleep(5000);
         robot.Transfer.setPower(-0.8);
         robot.Intake.setPower(0.7);
-        sleep(3000);
+        sleep(1000);
+        robot.Transfer.setPower(0);
+        robot.Intake.setPower(0);
+        sleep(1000);
+        robot.Transfer.setPower(-0.8);
+        robot.Intake.setPower(0.7);
+        sleep(1000);
+        robot.Transfer.setPower(0);
+        robot.Intake.setPower(0);
+        sleep(1000);
+        robot.Transfer.setPower(-0.8);
+        robot.Intake.setPower(0.7);
+        sleep(1000);
         robot.Transfer.setPower(0);
         robot.Intake.setPower(0);
         robot.Shooter.setPower(0);
