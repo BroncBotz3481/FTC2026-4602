@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 //AUSTIN: YOUR DEADLINE FOR THIS IS BEFORE KICKOFF
 //WE NEED YOUR CODE FOR KICKOFF DEMONSTRATION! HELP!
@@ -12,7 +11,7 @@ public class Team4602TeleOp2025 extends LinearOpMode {
     Team4602HM2025 robot = new Team4602HM2025();
     double targetTicksPerSec = (3000/60) *28;
 
-        PDIFtuning pidController = new PDIFtuning(0, 0, 0, 0.0005);
+        PIDFtuning pidController = new PIDFtuning(0, 0, 0, 0.0005);
 
     @Override
     public void runOpMode() {
@@ -81,7 +80,9 @@ public class Team4602TeleOp2025 extends LinearOpMode {
             }
 
            if(gamepad2.right_trigger > 0.5){
-               /*double currentVelo = robot.Shooter.getVelocity();
+               /*
+               // Velocity Shooter
+               double currentVelo = robot.Shooter.getVelocity();
                double power = pidController.calculate(targetTicksPerSec, currentVelo);
                robot.Shooter.setPower(Math.max(-1.0, Math.min(1.0, power)));
 
