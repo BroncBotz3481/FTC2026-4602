@@ -11,21 +11,20 @@ public class Team4602CloseAuto extends LinearOpMode {
     @Override
     public void runOpMode() {
 
-        // ✅ INIT HARDWARE
+        // Hardware Initializing
         robot.Map(hardwareMap);
 
         telemetry.addLine("Initialized");
         telemetry.update();
 
-        // ✅ WAIT FOR PLAY
         waitForStart();
 
         if (!opModeIsActive()) return;
 
-        // ---- AUTONOMOUS SEQUENCE ----
+        // Auto
         moveForward(800);
     }
-
+    //Move forward function
     public void moveForward(long timeMs) {
         robot.DriveRightFront.setPower(0.8);
         robot.DriveLeftFront.setPower(0.8);

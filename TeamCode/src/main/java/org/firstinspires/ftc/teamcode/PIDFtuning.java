@@ -1,14 +1,14 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.util.ElapsedTime;
-public class PDIFtuning {
+public class PIDFtuning {
         boolean firstRun = true;
         private double Kp, Ki, Kd, Kf;
         private double lastError = 0;
         private double integralSum = 0;
         private ElapsedTime timer = new ElapsedTime();
 
-        public PDIFtuning(double p, double i, double d, double f) {
+        public PIDFtuning(double p, double i, double d, double f) {
             Kp = p; Ki = i; Kd = d; Kf = f;
         }
 
